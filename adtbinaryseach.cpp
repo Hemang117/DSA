@@ -62,7 +62,9 @@ int Recursivebin(int a[], int l, int h, int key)
     return -1;
 }
 
-
+//? ayo wtf 
+//! yeet 
+//* bomboclat 
 
 
 int main()
