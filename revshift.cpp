@@ -18,6 +18,13 @@ void Display(struct Array arr)
     }
 }
 
+void Reverse(struct array* arr)
+{
+    int* b;
+    int i, j;
+    B = (int*)malloc(arr->len * sizeof(int));
+    for
+}
 
 
 int main()
