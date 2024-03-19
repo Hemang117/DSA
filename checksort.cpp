@@ -43,9 +43,9 @@ void insort(struct Array* arr, int x)
 
 int main()
 {
-    Array arr = { {2,3,4,5,6},10,5 };
+    Array arr = { {2,3,4,9,5,6},10,5 };
     Display(arr);
-    insort(&arr, 1);
+    insort(&arr, 8);
     Display(arr);
     return 0;
 
