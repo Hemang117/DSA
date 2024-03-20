@@ -30,6 +30,8 @@ void create(int A[], int n)
 }
 
 
+
+
 void disp(struct node* p)
 {
     while (p != NULL)
@@ -43,6 +45,8 @@ void disp(struct node* p)
 }
 
 
+
+
 void Rdisp(struct node* p)
 {
     if (p != NULL)
@@ -52,16 +56,21 @@ void Rdisp(struct node* p)
     }
 }
 
-void count(struct node* p)
+
+
+int count(struct node* p)
 {
-    int c = 0;
-    while (p != NULL)
+    int l = 0;
+    while (p)
     {
-        c = c + 1;
+        l++;
         p = p->next;
     }
-    cout << "the number of nodes are: " << c << endl;
+    return l;
 }
+
+
+
 
 void sum(struct node* p)
 {
@@ -73,6 +82,9 @@ void sum(struct node* p)
     }
     cout << "the sum of nodes is: " << s << endl;
 }
+
+
+
 
 void max(struct node* p)
 {
@@ -90,8 +102,9 @@ void max(struct node* p)
         }
     }
     cout << "the max of nodes is: " << m << endl;
-
 }
+
+
 
 void search(struct node* p, int x)
 {
@@ -109,20 +122,137 @@ void search(struct node* p, int x)
             break;
         }
     }
-    // cout << "the max of nodes is: " << m << endl;
-    // x = p->data;
 }
 
+
+struct node* Lsearch(struct node* p, int key)
+{
+    struct node* q;  // used for improving linear search. 
+    while (p != NULL)
+    {
+        if (key == p->data)
+        {
+            q->next = p->next;
+            p->next = first;
+            first = p;
+            return p;
+        }
+        q = p;
+        p = p->next;
+
+    }
+    return NULL;
+}
+
+
+void insert(struct node* p, int index, int x)
+{
+    int i;
+    struct node* t;
+    if (index < 0 || index>count(p)) { return; }
+
+    t = new node;
+    t->data = x;
+
+    if (index == 0)
+    {
+        t->next = first;
+        first = t;
+    }
+    else
+    {
+        for (i = 0;i < index - 1;i++)
+        {
+            p = p->next;
+            t->next = p->next;
+            p->next = t;
+
+        }
+    }
+
+}
+
+
+void sortedinsert(struct node* p, int x)
+{
+    node* t, * q = NULL;
+
+    t = new node;
+    t->data = x;
+    t->next = NULL;
+
+    if (first == NULL)
+    {
+        first = t;
+    }
+    else
+    {
+        while (p && p->data < x)
+        {
+            q = p;
+            p = p->next;
+        }
+        if (p == first)
+        {
+            t->next = first;
+            first = t;
+        }
+        else
+        {
+            t->next = q->next;
+            q->next = t;
+        }
+
+    }
+
+}
 
 
 int main()
 {
-    int A[] = { 3,5,7,10,15 };
-    create(A, sizeof(A) / 4);
-    // disp(first);
+
+    int A[] = { 10,20,30,40,50 };
+
+    create(A, sizeof(A) / 4); //* creates the nodes. 
     count(first);
-    sum(first);
-    max(first);
-    search(first, 8);
+
+    // disp(first);
+
+
+    // sum(first);
+
+    // max(first);
+
+    // search(first, 5);
+
+
+    //? for linear search according to Abdul Bari sir, we do smthn like thiss
+
+    // struct node* temp;
+    // temp = Lsearch(first, 10);
+    // if (temp)
+    // {
+    //     cout << "key is found at: " << temp->data << endl;
+    // }
+    // else
+    // {
+    //     cout << "key not found" << endl;
+    // }
+
+    // disp(first);
+    //? the above function is inclusive of improvements made for linear search.
+
+
+    // disp(first);
+    // insert(first, 0, 9);
+    // insert(first, 1, 10);
+    // insert(first, 2, 13);
+    // insert(first, 3, 14);
+
+    // sortedinsert(first, 5);
+    // sortedinsert(first, 24);
+
+    disp(first);
+
     return 0;
 }
