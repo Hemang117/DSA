@@ -74,6 +74,23 @@ void insertion(int A[], int n)
     }
 }
 
+void selection(int A[], int n)
+{
+    int i, j, k;
+    for (i = 0; i < n - 1;i++)
+    {
+        for (j = k = i;j < n;j++)
+        {
+            if (A[j] < A[k])
+            {
+                k = j;
+            }
+        }
+        swap(&A[i], &A[k]);
+    }
+}
+
+
 
 int main()
 {
@@ -81,6 +98,7 @@ int main()
     int n = 10;
     // bubble(A, n);
     // insertion(A, n);
+    // selection(A, n);
     disp(A, n);
     return 0;
 }
