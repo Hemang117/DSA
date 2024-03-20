@@ -38,15 +38,28 @@ void insort(struct Array* arr, int x)
     arr->len++;
 }
 
+int issorted(struct Array arr)
+{
+    int i;
+    for (i = 0;i < arr.len - 1;i++)
+
+        if (arr.A[i] > arr.A[i + 1])
+        {
+            cout << "not sorted" << endl;
+            cout << "it is not sorted at: " << arr.A[i] << endl;
+            return 0;
+        }
+    return 1;
+}
 
 
 
 int main()
 {
     Array arr = { {2,3,4,9,5,6},10,5 };
-    Display(arr);
+
     insort(&arr, 8);
+    issorted(arr);
     Display(arr);
-    return 0;
 
 }
