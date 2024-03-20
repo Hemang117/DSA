@@ -90,15 +90,64 @@ void selection(int A[], int n)
     }
 }
 
+//? basic difference between quick and selection sort
+//? quick uses element whereas selection uses index. 
+//! partition function used for quick sort.
 
+int partition(int A[], int l, int h)
+{
+    int pivot = A[l];
+    int i = l;
+    int j = h;
+
+    do
+    {
+        do { i++; } while (A[i] <= pivot);
+        do { j--; } while (A[j] > pivot);
+
+        if (i < j)
+        {
+            swap(&A[i], &A[j]);
+        }
+    } while (i < j);
+
+    swap(&A[l], &A[j]);
+    return j;
+}
+
+
+void quick(int A[], int l, int h)
+{
+    int j;
+
+    if (l < h)
+    {
+        j = partition(A, l, h);
+        quick(A, l, j);
+        quick(A, j + 1, h);
+
+    }
+
+}
 
 int main()
 {
-    int A[] = { 3, 7, 9,10, 6,5 , 12, 4,11 ,2 };
+    int A[] = { 3, 7, 9,10, 6,5 , 12, 4,11 ,2 };// for bubble, insertion and selection sort
     int n = 10;
-    // bubble(A, n);
-    // insertion(A, n);
-    // selection(A, n);
-    disp(A, n);
+    // int A[] = { 3, 7, 9,10, 6,5 , 12, 4,11 ,2,INT_MAX };// for quick sort
+    // int n = 11;
+
+    //! bubble(A, n);
+
+    //* insertion(A, n);
+
+    //? selection(A, n);
+
+    //! quick(A, 0, n - 1);
+
+    // disp(A, n - 1);
+
+
+
     return 0;
 }
