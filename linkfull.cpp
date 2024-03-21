@@ -1,4 +1,5 @@
 #include<iostream>
+#include<stdio.h>
 using namespace std;
 
 struct node
@@ -149,7 +150,8 @@ void insert(struct node* p, int index, int x)
 {
     int i;
     struct node* t;
-    if (index < 0 || index>count(p)) { return; }
+    if (index < 0 || index>count(p))
+        return;
 
     t = new node;
     t->data = x;
@@ -164,10 +166,10 @@ void insert(struct node* p, int index, int x)
         for (i = 0;i < index - 1;i++)
         {
             p = p->next;
-            t->next = p->next;
-            p->next = t;
 
         }
+        t->next = p->next;
+        p->next = t;
     }
 
 }
@@ -208,16 +210,63 @@ void sortedinsert(struct node* p, int x)
 }
 
 
+void delte(struct node* p, int index)
+{
+    int i;
+    struct node* q;
+
+    if (index < 1 || index>count(p))
+    {
+        cout << "wrong index" << endl;
+
+    }
+    if (index == 1)
+    {
+        q = first;
+        first = first->next;
+        delete q;
+
+    }
+
+    else
+    {
+        for (i = 0;i < index - 1;i++)
+        {
+            q = p;
+            p = p->next;
+        }
+        q->next = p->next;
+        free(p);
+
+    }
+
+}
+
+void rev(struct node* p)
+{
+    node* q = NULL, * r = NULL;
+    while (p != NULL)
+    {
+        r = q;
+        q = p;
+        p = p->next;
+        q->next = r;
+
+    }
+    first = q;
+
+
+
+}
+
+
 int main()
 {
 
     int A[] = { 10,20,30,40,50 };
 
-    create(A, sizeof(A) / 4); //* creates the nodes. 
-    count(first);
-
-    // disp(first);
-
+    create(A, 5); //* creates the nodes. 
+    // count(first);
 
     // sum(first);
 
@@ -242,15 +291,17 @@ int main()
     // disp(first);
     //? the above function is inclusive of improvements made for linear search.
 
-
-    // disp(first);
     // insert(first, 0, 9);
-    // insert(first, 1, 10);
+    // insert(first, 5, 90);
     // insert(first, 2, 13);
     // insert(first, 3, 14);
 
     // sortedinsert(first, 5);
     // sortedinsert(first, 24);
+
+    // delte(first, 6);
+
+    // rev(first);
 
     disp(first);
 
