@@ -7,7 +7,6 @@ struct Array
     int size;
     int len;
 };
-
 void Display(struct Array arr)
 {
     int i;
@@ -17,7 +16,6 @@ void Display(struct Array arr)
         cout << arr.A[i] << endl;
     }
 }
-
 // void Append(struct Array* arr, int x)
 // {
 //     if (arr->len < arr->size)
@@ -70,9 +68,6 @@ void swap(int* x, int* y)
     *y = temp;
 
 }
-
-
-
 int Linear(struct Array arr, int key)
 {
     int i;
@@ -99,7 +94,6 @@ int LinearIMP(struct Array* arr, int key)
     return -1;
 
 }
-
 int main()
 {
     Array arr = { { 2,3,4,5,6 },10,5 };
